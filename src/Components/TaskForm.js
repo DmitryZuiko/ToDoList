@@ -36,7 +36,6 @@ class TaskForm extends React.Component {
                     {this.props.state.showMore ? 'hide' : 'more'}
                 </button>
                 <br/>
-                <WarningBanner warn={this.props.state.showMore} />
                 <label>
                     Type:
                     <select name="taskType" value={this.props.state.taskType} onChange={this.props.taskTypeChoose}>
@@ -45,33 +44,23 @@ class TaskForm extends React.Component {
                     </select>
                 </label>
                 <br/>
-                <label>
-                    <input type="checkbox" />
-                    make report
-                </label>
-                <br/>
-                <label>
-                    Comment:
+                <div style={this.props.state.showMore ? {display: "block"} : {display: "none"}}>
+                    <label>
+                        <input type="checkbox" />
+                        make report
+                    </label>
                     <br/>
-                    <textarea name="comment" value={this.props.state.comment} onChange={this.props.commentChange}>...</textarea>
-                </label>
+                    <label>
+                        Comment:
+                        <br/>
+                        <textarea name="comment" value={this.props.state.comment} onChange={this.props.commentChange}>...</textarea>
+                    </label>
+                </div>
                 <br/>
                 <button name="addCard" value={this.props.state.addCard} onClick={this.props.sendToDoInfo}>Add</button>
             </form>
         );
     }
-}
-
-function WarningBanner(props) {
-    if (!props.warn) {
-        return null;
-    }
-
-    return (
-        <div className="warning">
-            Warning!
-        </div>
-    );
 }
 
 export default TaskForm;
