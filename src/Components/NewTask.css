@@ -1,0 +1,28 @@
+.gridContain {
+    padding-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 2vw;
+}
+
+.newCard {
+    width: 400px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+.container {
+    width: 250px;
+}
+
+p, h4 {
+    padding: 5px;
+}
+
+.text {
+    font-style: italic;
+}

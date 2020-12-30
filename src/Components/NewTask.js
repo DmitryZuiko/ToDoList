@@ -1,20 +1,25 @@
 import React from 'react';
+import './NewTask.css'
 
-class NewTask extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <div style={this.props.state.addCard ? {display: "block"} : {display: "none"}}>
-                <p>{this.props.state.firstName} {this.props.state.lastName}</p>
-                <p>From {this.props.state.startingDate} to {this.props.state.endDate}</p>
-                <p>Type {this.props.state.taskType}</p>
-                <p>Comment: {this.props.state.comment}</p>
-            </div>
-        );
-    }
+function NewTask (props) {
+    return (
+        <div className="gridContain">
+            {
+                props.state.map((card, index) => {
+                    return (
+                        <div className="newCard" key={index}>
+                            <div className="container">
+                                <h4>{card.firstName} {card.lastName}</h4>
+                                <p>From: {card.startingDate} to: {card.endDate}</p>
+                                <p>Type: {card.taskType}</p>
+                                <p className="text">{card.comment}</p>
+                            </div>
+                        </div>
+                    )
+                })
+            }
+        </div>
+    );
 }
 
 export default NewTask;

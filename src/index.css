@@ -12,10 +12,8 @@ code {
     monospace;
 }
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50em;
+* {
+  margin: 0;
+  padding: 0;
 }
 

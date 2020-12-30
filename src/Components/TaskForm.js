@@ -1,66 +1,70 @@
-import React from 'react';
+import React, {useRef, useEffect} from 'react';
+import './TaskForm.css';
 
-class TaskForm extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+function TaskForm (props) {
 
-    render() {
-        return (
-            <form >
-                <label>
-                    First name:
-                    <input type="text" name="firstName" value={this.props.state.firstName} onChange={this.props.firstNameChange} />
-                </label>
-                <br/>
-                <label>
-                    Last name:
-                    <input type="text" name="lastName" value={this.props.state.lastName} onChange={this.props.lastNameChange} />
-                </label>
-                <br/>
-                <label>
-                    E-mail:
-                    <input type="text" name="lastName" value={this.props.state.email} onChange={this.props.emailChange} />
-                </label>
-                <br/>
-                <label>
-                    From:
-                    <input type="date" name="startingDate" value={this.props.state.startingDate} onChange={this.props.startingDateChange} />
-                </label>
-                <label>
-                    To:
-                    <input type="date" name="endDate" value={this.props.state.endDate} onChange={this.props.endDateDateChange} />
-                </label>
-                <br/>
-                <button name="showMore" value={this.props.state.showMore} onClick={this.props.showMoreInfo}>
-                    {this.props.state.showMore ? 'hide' : 'more'}
-                </button>
-                <br/>
-                <label>
-                    Type:
-                    <select name="taskType" value={this.props.state.taskType} onChange={this.props.taskTypeChoose}>
-                        <option value="important">important</option>
-                        <option value="unimportant">unimportant</option>
-                    </select>
-                </label>
-                <br/>
-                <div style={this.props.state.showMore ? {display: "block"} : {display: "none"}}>
+    const focusRef = useRef()
+
+    useEffect(() => {
+        focusRef.current.focus();
+    }, [props.state.showMore])
+
+    return (
+        <div style={props.isFormActive ? {display: "block"} : {display: "none"}}>
+            <form  className="userForm">
+                <div className="container">
                     <label>
-                        <input type="checkbox" />
-                        make report
+                        First name:
+                        <input className="input" type="text" name="firstName" value={props.state.firstName} onChange={props.firstNameChange} />
                     </label>
                     <br/>
                     <label>
-                        Comment:
-                        <br/>
-                        <textarea name="comment" value={this.props.state.comment} onChange={this.props.commentChange}>...</textarea>
+                        Last name:
+                        <input className="input" type="text" name="lastName" value={props.state.lastName} onChange={props.lastNameChange} />
                     </label>
+                    <br/>
+                    <label>
+                        E-mail:
+                        <input className="input" type="text" name="lastName" value={props.state.email} onChange={props.emailChange} />
+                    </label>
+                    <br/>
+                    <label>
+                        From:
+                        <input className="input" type="date" name="startingDate" value={props.state.startingDate} onChange={props.startingDateChange} />
+                    </label>
+                    <label>
+                        To:
+                        <input className="input" type="date" name="endDate" value={props.state.endDate} onChange={props.endDateDateChange} />
+                    </label>
+                    <br/>
+                    <label>
+                        Type:
+                        <select name="taskType" value={props.state.taskType} onChange={props.taskTypeChoose}>
+                            <option value="important">important</option>
+                            <option value="unimportant">unimportant</option>
+                        </select>
+                    </label>
+                    <br/>
+                    <button name="showMore" value={props.state.showMore} onClick={props.showMoreInfo}>
+                        {props.state.showMore ? 'hide' : 'more'}
+                    </button>
+                    <div className="hideZone" style={props.state.showMore ? {display: "block"} : {display: "none"}}>
+                        <div className="check">
+                            <input type="checkbox" />
+                            <div className="report">make report</div>
+                        </div>
+                        <br/>
+                        <label>
+                            <div> Comment:</div>
+                            <textarea name="comment" ref={focusRef} value={props.state.comment} onChange={props.commentChange}>...</textarea>
+                        </label>
+                    </div>
+                    <br/>
+                    <button name="addCard" value={props.state.addCard} onClick={props.sendToDoInfo}>Add</button>
                 </div>
-                <br/>
-                <button name="addCard" value={this.props.state.addCard} onClick={this.props.sendToDoInfo}>Add</button>
             </form>
-        );
-    }
+        </div>
+    );
 }
 
 export default TaskForm;

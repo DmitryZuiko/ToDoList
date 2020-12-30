@@ -1,13 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TaskForm from "./TaskForm";
-import NewTask from "./NewTask"
+import NewTask from "./NewTask";
+import "./App.css";
 
-class App extends React.Component {
+function App () {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
+    const [state, setState] = useState({
+        formState: {
             firstName: '',
             lastName: '',
             email: '',
@@ -17,73 +16,116 @@ class App extends React.Component {
             showMore: false,
             comment: '',
             addCard: false
-        }
+        },
+        cardsState: [],
+        isFormActive: false
+    })
+
+    const firstNameChange = (e) => {
+        setState({
+            ...state, formState: {
+                ...state.formState, firstName: e.target.value
+            }
+        });
     }
 
-    firstNameChange = (e) => {
-        this.setState({firstName: e.target.value});
+    const lastNameChange = (e) => {
+        setState({
+            ...state, formState: {
+                ...state.formState, lastName: e.target.value
+            }
+        });
     }
 
-    lastNameChange = (e) => {
-        this.setState({lastName: e.target.value});
+    const emailChange = (e) => {
+        setState({
+            ...state, formState: {
+                ...state.formState, email: e.target.value
+            }
+        });
     }
 
-    emailChange = (e) => {
-        this.setState({email: e.target.value});
+    const startingDateChange = (e) => {
+        setState({
+            ...state, formState: {
+                ...state.formState, startingDate: e.target.value
+            }
+        });
     }
 
-    startingDateChange = (e) => {
-        this.setState({startingDate: e.target.value});
+    const endDateDateChange = (e) => {
+        setState({
+            ...state, formState: {
+                ...state.formState, endDate: e.target.value
+            }
+        });
     }
 
-    endDateDateChange = (e) => {
-        this.setState({endDate: e.target.value});
+    const taskTypeChoose = (e) => {
+        setState({
+            ...state, formState: {
+                ...state.formState, taskType: e.target.value
+            }
+        });
     }
 
-    taskTypeChoose = (e) => {
-        this.setState({taskType: e.target.value});
-    }
-
-    showMoreInfo = (e) => {
+    const showMoreInfo = (e) => {
         e.preventDefault();
-        this.setState(state => ({
-            showMore: !state.showMore
-        }))
+        setState({
+            ...state, formState: {
+                ...state.formState, showMore: !state.formState.showMore
+            }
+        })
     }
 
-    commentChange = (e) => {
-        this.setState({comment: e.target.value})
+    const commentChange = (e) => {
+        setState({
+            ...state, formState: {
+                ...state.formState, comment: e.target.value
+            }
+        })
     }
 
-    sendToDoInfo = (e) => {
+    const sendToDoInfo = (e) => {
         e.preventDefault();
-        this.setState(state => ({
-            addCard: !state.addCard
-        }))
-        console.log(this.state);
+        const arr = [...state.cardsState, {...state.formState, id: null}]
+        setState({
+            ...state, cardsState: arr
+        })
+        console.log(state.cardsState);
     }
 
-    render() {
+    const openForm = (e) => {
+        e.preventDefault();
+        setState({
+            ...state,
+            isFormActive: !state.isFormActive
+        })
+    }
+
+
         return (
             <div className="card">
                 <div className="userInfo">
+                    <button onClick={openForm} className="openForm">+</button>
                     <TaskForm
-                        state={this.state}
-                        firstNameChange={this.firstNameChange}
-                        lastNameChange={this.lastNameChange}
-                        emailChange={this.emailChange}
-                        startingDateChange={this.startingDateChange}
-                        endDateDateChange={this.endDateDateChange}
-                        taskTypeChoose={this.taskTypeChoose}
-                        showMoreInfo={this.showMoreInfo}
-                        commentChange={this.commentChange}
-                        sendToDoInfo={this.sendToDoInfo}
+                        state={state.formState}
+                        firstNameChange={firstNameChange}
+                        lastNameChange={lastNameChange}
+                        emailChange={emailChange}
+                        startingDateChange={startingDateChange}
+                        endDateDateChange={endDateDateChange}
+                        taskTypeChoose={taskTypeChoose}
+                        showMoreInfo={showMoreInfo}
+                        commentChange={commentChange}
+                        sendToDoInfo={sendToDoInfo}
+                        isFormActive={state.isFormActive}
                     />
                 </div>
-                <NewTask state={this.state} add={this.state.addCard}/>
+                <NewTask state={state.cardsState}/>
             </div>
         )
-    }
+
 }
 
 export default App;

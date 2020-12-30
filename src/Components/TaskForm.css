@@ -1,0 +1,92 @@
+.userForm {
+    margin-top: 20px;
+    border: none;
+    width: 20em;
+    height: 32em;
+    display: flex;
+    justify-content: center;
+    outline: none;
+    background-color: #e3e3e3;
+    border-radius: 20px;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+label {
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input {
+    width: 150px;
+    font-size: 13px;
+    padding: 6px 0 4px 10px;
+    border: 1px solid #cecece;
+    background: #F6F6f6;
+    border-radius: 5px;
+    outline: none;
+}
+
+.hideZone {
+    margin-top: 10px;
+}
+
+textarea {
+    overflow: auto;
+    resize: none;
+    width: 300px;
+    height: 50px;
+    background: #f6f6f6;
+    border: 1px solid #cecece;
+    border-radius: 5px;
+    outline: none;
+    padding: 8px 0 8px 10px;
+}
+
+select {
+    display: block;
+    border-radius: 5px;
+    border: 1px solid #cecece;
+    background-color: #F6F6f6;
+    width: 163px;
+    padding: 4px 15px 4px 10px;
+    color: #444;
+    background-position: 290px -145px;
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    outline: none;
+}
+
+.check {
+    background-position: 0 3px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.report {
+    margin-left: 5px;
+}
+
+button {
+    width: 50px;
+    height: 28px;
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #666;
+    border-radius: 5px;
+    box-shadow: inset 0 2px 2px #ccc;
+    cursor: pointer;
+    outline: none;
+}
+
+button:hover {
+    box-shadow: 0 0 2px #ccc;
+}
+
