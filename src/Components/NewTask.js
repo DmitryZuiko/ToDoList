@@ -1,11 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
+
 import './NewTask.css'
 
-function NewTask (props) {
+function NewTask ({cardsState}) {
+
     return (
+
         <div className="gridContain">
             {
-                props.state.map((card, index) => {
+                cardsState.map((card, index) => {
                     return (
                         <div className="newCard" key={index}>
                             <div className="container">
