@@ -1,11 +1,15 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 import './NewTask.css'
 
 function NewTask ({cardsState}) {
 
+    if (cardsState.length === 0) {
+        return (
+            <div className="emptyCont"><div className="empty">No cards yet</div></div>
+        )
+    }
     return (
-
         <div className="gridContain">
             {
                 cardsState.map((card, index) => {

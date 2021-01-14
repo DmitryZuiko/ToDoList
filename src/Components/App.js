@@ -10,7 +10,7 @@ function App ({ setFormActive }) {
         <div className="app">
             <nav>
                 <NavLink to='/'>home</NavLink>
-                <NavLink to='/cards'>cards</NavLink>
+                <NavLink to='/cards' className="navCards">cards</NavLink>
             </nav>
             <Switch>
                 <Route path='/' exact>

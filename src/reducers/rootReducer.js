@@ -74,7 +74,7 @@ export default function (state = INITIAL_STATE, action) {
                 ...state,
                 formState: {
                     ...state.formState,
-                    showMore: !state.showMore
+                    showMore: !state.formState.showMore
                 }
             }
         case 'COMMENT_CHANGE':

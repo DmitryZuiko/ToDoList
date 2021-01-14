@@ -43,9 +43,10 @@ export default connect(
                 payload: e.target.value
             })
         },
-        showMoreInfo: () => {
+        showMoreInfo: (e) => {
+            e.preventDefault();
             dispatch({
-                type: 'SHOW_HIDDEN_INFO'
+                type: 'SHOW_HIDDEN_INFO',
             })
         },
         commentChange: (e) => {
@@ -54,7 +55,8 @@ export default connect(
                 payload: e.target.value
             })
         },
-        sendToDoInfo: () => {
+        sendToDoInfo: (e) => {
+            e.preventDefault();
             dispatch({
                 type: 'ADD_NEW_CARD'
             })

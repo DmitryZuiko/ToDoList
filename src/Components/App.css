@@ -1,16 +1,21 @@
-/*.app {*/
-/*    display: flex;*/
-/*    flex-wrap: wrap;*/
-/*}*/
+.app {
+    position: relative;
+}
 
 a {
+    position: absolute;
     float: left;
     display: block;
+    width: 40px;
     padding: 8px;
     background-color: #dddddd;
     text-decoration: none;
     color: #666;
     border: 1px solid #ececec;
+}
+
+.navCards {
+    margin-top: 39px;
 }
 
 a:hover {
